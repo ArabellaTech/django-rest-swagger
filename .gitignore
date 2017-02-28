@@ -46,4 +46,3 @@ supervisord.log
 tests/cigar_example/static_root/
 dist
 site/
-example_app/
