@@ -8,6 +8,11 @@ from rest_framework.views import APIView
 from . import renderers
 
 
+class RoSchemaGenerator(SchemaGenerator):
+    def has_view_permissions(self, path, method, view):
+        return True
+
+
 def get_swagger_view(title=None, url=None, patterns=None, urlconf=None):
     """
     Returns schema view which renders Swagger/OpenAPI.
@@ -23,7 +28,7 @@ def get_swagger_view(title=None, url=None, patterns=None, urlconf=None):
         ]
 
         def get(self, request):
-            generator = SchemaGenerator(
+            generator = RoSchemaGenerator(
                 title=title,
                 url=url,
                 patterns=patterns,
