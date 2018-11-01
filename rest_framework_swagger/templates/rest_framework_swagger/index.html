@@ -47,6 +47,15 @@
     {% endif %}
   </div>
 
+  <div id="other-formats">
+      other formats:
+      {% for renderer in view.renderer_classes %}
+        {% if renderer.format != "swagger" %}
+          <a href="?format={{ renderer.format }}">{{ renderer.format }}</a>
+        {% endif %}
+      {% endfor %}
+  </div>
+
   <div id="rest-swagger-ui"></div>
   {% csrf_token %}
 
